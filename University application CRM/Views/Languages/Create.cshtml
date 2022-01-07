@@ -1,0 +1,14 @@
+﻿@model Language
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add new Language</h1>
+
+<form method="post">
+  <div class="mb-3">
+    <label asp-for="Name" class="form-label"></label>
+    <input class="form-control" asp-for="Name">
+  </div>
+  <button type="submit" class="btn btn-success" asp-controller="Languages" asp-action="Create">Add</button>
+</form>

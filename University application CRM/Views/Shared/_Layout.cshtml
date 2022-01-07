@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - University_application_CRM</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/University_application_CRM.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline" style="text-align:center;">University Application CRM</span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="Home" asp-action="Index">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="Languages" asp-action="Index">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Languages</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="StudyFields" asp-action="Index">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Study Fields</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="Universities" asp-action="Index">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Universities</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="Countries" asp-action="Index">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Countries</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="Programs" asp-action="Index">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Programs</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="Programs" asp-action="Search">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Programs Search</span>
+                            </a>
+                        </li>
+                        <hr>
+                        <li class="nav-item">
+                            <a class="nav-link align-middle px-0" asp-area="" asp-controller="Home" asp-action="Logout">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        }
+        <div class="col py-3">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+</body>
+
+@RenderSection("Scripts",false)
+</html>

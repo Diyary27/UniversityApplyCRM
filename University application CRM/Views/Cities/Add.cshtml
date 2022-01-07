@@ -1,0 +1,15 @@
+﻿@model City
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add new City</h1>
+
+<form method="post">
+  <div class="mb-3">
+    <label asp-for="Name" class="form-label"></label>
+    <input class="form-control" asp-for="Name">
+  </div>
+  <input type="hidden" asp-for="CountryId" value="@Model.CountryId"/>
+  <button type="submit" class="btn btn-success" asp-controller="Cities" asp-action="Add">Add</button>
+</form>

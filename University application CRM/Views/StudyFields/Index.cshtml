@@ -1,0 +1,39 @@
+﻿@model IEnumerable<StudyField>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Study Fields</h1>
+
+<a class="btn btn-success" asp-controller="StudyFields" asp-action="Create">Add Study Field</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{var i = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@i</th> @{i += 1;}
+                <td>@item.Name_en | @item.Name_fa</td>
+                <td>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td>
+                    <a class="btn btn-warning" asp-controller="Specialities" asp-action="index" asp-route-id="@item.Id">Specialities</a>
+                    <a class="btn btn-success" asp-controller="Specialities" asp-action="create" asp-route-id="@item.Id">Add Speciality</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<University>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Universities</h1>
+
+<a class="btn btn-success" asp-controller="Universities" asp-action="Create">Add University</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col"> </th>
+            <th scope="col"> </th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{var i = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@i</th> @{i += 1;}
+                <td>
+                    <img src="/Images/UniLogos/@(item.Id).jpg" style="width: 50px; height: 50px;">
+                </td>
+                <td>@item.Title</td>
+                <td>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+                <td><a class="btn btn-info" asp-controller="UniversityPrograms" asp-action="index" asp-route-id="@item.Id">Programs</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>

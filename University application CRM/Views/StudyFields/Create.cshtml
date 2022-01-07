@@ -1,0 +1,18 @@
+﻿@model StudyField
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Add new Study Field</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Name_en" class="form-label"></label>
+        <input class="form-control" asp-for="Name_en">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Name_fa" class="form-label"></label>
+        <input class="form-control" asp-for="Name_fa">
+    </div>
+    <button type="submit" class="btn btn-success" asp-controller="StudyFields" asp-action="Create">Add</button>
+</form>
