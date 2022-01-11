@@ -68,20 +68,54 @@ namespace University_application_CRM.Controllers
         // GET: CountriesController/Edit/5
         public IActionResult Edit(int id)
         {
-            var studyField = _context.StudyFields.Where(i => i.Id == id).FirstOrDefault();
-            return View(studyField);
+            var university = _context.Universities.Where(i => i.Id == id)
+                .Include(c => c.City).FirstOrDefault();
+
+            var cityList = _context.Cities.ToList();
+
+            var universityVM = new UniversityViewModel()
+            {
+                Id = university.Id,
+                Title = university.Title,
+                Address = university.Address,
+                Founded = university.Founded,
+                Sector = Enum.Parse<Sector>(university.Sector),
+                Website = university.Website,
+                StudentCount = university.StudentCount,
+                About_en = university.About_en,
+                About_fa = university.About_fa,
+                Cities = cityList,
+                City = university.City.Name,
+                SchoolType = Enum.Parse<SchoolType>(university.SchoolType),
+                ActiveInSearch = university.ActiveInSearch,
+                ActiveInNewApps = university.ActiveInNewApps
+            };
+            return View(universityVM);
         }
 
         // POST: CountriesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(StudyField studyField)
+        public IActionResult Edit(UniversityViewModel universityVM)
         {
-            var StudyField = _context.StudyFields.Where(i => i.Id == studyField.Id).FirstOrDefault();
-
-            StudyField.Name_en = studyField.Name_en;
-            StudyField.Name_fa = studyField.Name_fa;
+            var university = _context.Universities.Find(universityVM.Id);
+            university.Title = universityVM.Title;
+            university.Address = universityVM.Address;
+            university.Founded = universityVM.Founded;
+            university.Sector = universityVM.Sector.ToString();
+            university.Website = universityVM.Website;
+            university.StudentCount = universityVM.StudentCount;
+            university.About_en = universityVM.About_en;
+            university.About_fa = universityVM.About_fa;
+            university.SchoolType = universityVM.SchoolType.ToString();
+            university.ActiveInSearch = universityVM.ActiveInSearch;
+            university.ActiveInNewApps = universityVM.ActiveInNewApps;
             _context.SaveChanges();
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(),
+                "wwwroot", "Images", "UniLogos", university.Id + ".jpg");
+            universityVM.UniLogo.CopyTo(new FileStream(path, FileMode.Create));
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -92,12 +126,29 @@ namespace University_application_CRM.Controllers
             {
                 return NotFound();
             }
-            var studyField = _context.StudyFields.Where(i => i.Id == id).FirstOrDefault();
-            if (studyField == null)
+            var university = _context.Universities.Where(i => i.Id == id)
+                .Include(c => c.City).FirstOrDefault();
+
+            var cityList = _context.Cities.ToList();
+
+            var universityVM = new UniversityViewModel()
             {
-                return NotFound();
-            }
-            return View(studyField);
+                Id = university.Id,
+                Title = university.Title,
+                Address = university.Address,
+                Founded = university.Founded,
+                Sector = Enum.Parse<Sector>(university.Sector),
+                Website = university.Website,
+                StudentCount = university.StudentCount,
+                About_en = university.About_en,
+                About_fa = university.About_fa,
+                Cities = cityList,
+                City = university.City.Name,
+                SchoolType = Enum.Parse<SchoolType>(university.SchoolType),
+                ActiveInSearch = university.ActiveInSearch,
+                ActiveInNewApps = university.ActiveInNewApps
+            };
+            return View(universityVM);
         }
 
         // POST: CountriesController/Delete/5
@@ -105,9 +156,13 @@ namespace University_application_CRM.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            var studyField = _context.StudyFields.Find(id);
-            _context.Remove(studyField);
+            var university = _context.Universities.Find(id);
+            _context.Remove(university);
             _context.SaveChanges();
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(),
+                "wwwroot", "Images", "UniLogos", university.Id + ".jpg");
+            System.IO.File.Delete(path);
 
             return RedirectToAction(nameof(Index));
         }

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uKYhpWAuFCdYF1fGv49C1CVLb8Hv/jtLFWD8UmeeOuY=",
+  "Hash": "OYrRCBDIDgRx0GDnVO+HejFXjrH7PATEELkGxLnWsWs=",
   "Source": "University application CRM",
   "BasePath": "_content/University application CRM",
   "Mode": "Default",
@@ -85,23 +85,6 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\Diyar\\source\\repos\\University application CRM\\University application CRM\\wwwroot\\Images\\UniLogos\\0.jpg",
-      "SourceId": "University application CRM",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Diyar\\source\\repos\\University application CRM\\University application CRM\\wwwroot\\",
-      "BasePath": "_content/University application CRM",
-      "RelativePath": "Images/UniLogos/0.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\UniLogos\\0.jpg"
-    },
-    {
       "Identity": "C:\\Users\\Diyar\\source\\repos\\University application CRM\\University application CRM\\wwwroot\\Images\\UniLogos\\4.jpg",
       "SourceId": "University application CRM",
       "SourceType": "Discovered",
@@ -117,23 +100,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\UniLogos\\4.jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Diyar\\source\\repos\\University application CRM\\University application CRM\\wwwroot\\Images\\UniLogos\\download.png.jpg",
-      "SourceId": "University application CRM",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Diyar\\source\\repos\\University application CRM\\University application CRM\\wwwroot\\",
-      "BasePath": "_content/University application CRM",
-      "RelativePath": "Images/UniLogos/download.png.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Images\\UniLogos\\download.png.jpg"
     },
     {
       "Identity": "C:\\Users\\Diyar\\source\\repos\\University application CRM\\University application CRM\\wwwroot\\js\\site.js",

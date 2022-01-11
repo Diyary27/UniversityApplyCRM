@@ -1,20 +1,69 @@
-﻿@model Speciality
+﻿@model UniversityViewModel
 @{
     ViewData["Title"] = "Edit";
 }
 
 <h1>Edit</h1>
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div class="mb-3">
-        <label asp-for="Name_en" class="form-label"></label>
-        <input class="form-control" asp-for="Name_en">
+        <label asp-for="Title" class="form-label"></label>
+        <input class="form-control" asp-for="Title">
     </div>
     <div class="mb-3">
-        <label asp-for="Name_fa" class="form-label"></label>
-        <input class="form-control" asp-for="Name_fa">
+        <label asp-for="Address" class="form-label"></label>
+        <input class="form-control" asp-for="Address">
     </div>
-    <input type="hidden" class="form-control" asp-for="Id">
-    <input type="hidden" class="form-control" asp-for="StudyFieldId">
-    <button type="submit" class="btn btn-success" asp-controller="Specialities" asp-action="Edit">Edit</button>
+    <div class="mb-3">
+        <label asp-for="Founded" class="form-label"></label>
+        <input class="form-control" asp-for="Founded">
+    </div>
+    <div class="mb-3">
+        <label asp-for="Sector" class="form-label"></label>
+        <select class="form-control" asp-for="Sector" asp-items="Html.GetEnumSelectList<Sector>()">
+            <option selected="selected" value="">Please Select</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Website" class="form-label"></label>
+        <input class="form-control" asp-for="Website">
+    </div>
+    <div class="mb-3">
+        <label asp-for="StudentCount" class="form-label"></label>
+        <input class="form-control" asp-for="StudentCount">
+    </div>
+    <div class="mb-3">
+        <label asp-for="About_en" class="form-label"></label>
+        <textarea class="form-control" asp-for="About_en"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="About_fa" class="form-label"></label>
+        <textarea class="form-control" asp-for="About_fa"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="SchoolType" class="form-label"></label>
+        <select class="form-control" asp-for="SchoolType" asp-items="Html.GetEnumSelectList<SchoolType>()">
+            <option selected="selected" value="">Please Select</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Cities" class="form-label">City</label>
+        <select class="form-control" asp-for="City" asp-items="@(new SelectList(Model.Cities, "Name", "Name"))">
+            <option selected="selected" value="">Please Select</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="UniLogo" class="form-label"></label>
+        <input class="form-control" asp-for="UniLogo">
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" asp-for="ActiveInSearch">
+        <label class="form-check-label" asp-for="ActiveInSearch"></label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" asp-for="ActiveInNewApps">
+        <label class="form-check-label" asp-for="ActiveInNewApps"></label>
+    </div>
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-success" asp-controller="Universities" asp-action="Edit">Edit</button>
 </form>
