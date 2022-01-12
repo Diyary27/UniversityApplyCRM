@@ -61,13 +61,40 @@ namespace University_application_CRM.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
+            var Program = _context.Programs.Where(i => i.Id == id)
+                .Include(i => i.Speciality).Include(i => i.Language).FirstOrDefault();
 
-            return View();
+            var specialities = _context.Specialities.ToList();
+            var languages = _context.Languages.ToList();
+
+            var programsVM = new ProgramsViewModel()
+            {
+                Specialities = specialities,
+                Speciality = Program.Speciality.Name_en,
+                Languages = languages,
+                Language = Program.Language.Name,
+                Level = Enum.Parse<Level>(Program.Level),
+                ActiveInSearch = Program.ActiveInSearch,
+                ActiveInNewApps = Program.ActiveInNewApps
+            };
+
+            return View(programsVM);
         }
 
         [HttpPost]
         public IActionResult Edit(ProgramsViewModel programsVM)
         {
+            var Speciality = _context.Specialities.Where(i => i.Name_en == programsVM.Speciality).FirstOrDefault();
+            var Language = _context.Languages.Where(i => i.Name == programsVM.Language).FirstOrDefault();
+            var Program = _context.Programs.Find(programsVM.Id);
+            
+            Program.SpecialityId = Speciality.Id;
+            Program.LanguageId = Language.Id;
+            Program.Level = programsVM.Level.ToString();
+            Program.ActiveInSearch = programsVM.ActiveInSearch;
+            Program.ActiveInNewApps = programsVM.ActiveInNewApps;
+
+            _context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
         }
@@ -75,16 +102,19 @@ namespace University_application_CRM.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
+            var Program = _context.Programs.Find(id);
 
-            return View();
+            return View(Program);
         }
 
         [HttpPost]
         [ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-
-            return View();
+            var Program = _context.Programs.Find(id);
+            _context.Programs.Remove(Program);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
