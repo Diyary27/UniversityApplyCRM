@@ -1,0 +1,37 @@
+﻿@model ProgramsViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Speciality" class="form-label"></label>
+        <select class="form-control" asp-for="Speciality" asp-items="@(new SelectList(Model.Specialities, "Name_en", "Name_en"))">
+            <option selected="selected" value="">Please Select</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Language" class="form-label"></label>
+        <select class="form-control" asp-for="Language" asp-items="@(new SelectList(Model.Languages, "Name", "Name"))">
+            <option selected="selected" value="">Please Select</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Level" class="form-label"></label>
+        <select class="form-control" asp-for="Level" asp-items="@Html.GetEnumSelectList<Level>()">
+            <option selected="selected" value="">Please Select</option>
+        </select>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" asp-for="ActiveInSearch">
+        <label class="form-check-label" asp-for="ActiveInSearch"></label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" asp-for="ActiveInNewApps">
+        <label class="form-check-label" asp-for="ActiveInNewApps"></label>
+    </div>
+    <button type="submit" class="btn btn-success" asp-controller="Programs" asp-action="Create">Create</button>
+</form>

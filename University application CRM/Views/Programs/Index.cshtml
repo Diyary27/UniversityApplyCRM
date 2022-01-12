@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Programs>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Language</th>
+            <th scope="col">Level</th>
+            <th scope="col"> </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{var i = 1;}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@i</th> @{i += 1;}
+                <td>@item.Speciality.Name_en</td>
+                <td>@item.Language.Name</td>
+                <td>@item.Level</td>
+                <td>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

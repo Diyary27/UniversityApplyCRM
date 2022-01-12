@@ -3,14 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace University_application_CRM.Models
 {
-    //fixed options
-    public enum Level
-    {
-        Associate,
-        Bachelor,
-        Master,
-        PhD
-    }
 
     public class Programs
     {
@@ -21,7 +13,7 @@ namespace University_application_CRM.Models
         [Required]
         public int LanguageId { get; set; }
         [Required]
-        public Level Level { get; set; }
+        public string Level { get; set; }
         public bool ActiveInSearch { get; set; }
         public bool ActiveInNewApps { get; set; }
 
