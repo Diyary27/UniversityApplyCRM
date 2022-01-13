@@ -1,0 +1,68 @@
+﻿@model UniversityProgramViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="ProgramName" class="form-label"></label>
+        <input class="form-control" list="@Model.Programs" />
+        <datalist id="@Model.Programs">
+            @foreach (var item in Model.Programs)
+            {
+                <option value="@item.Speciality.Name_en">@item.Speciality.Name_en</option>
+            }
+        </datalist>
+    </div>
+    <div class="mb-3">
+        <label asp-for="TuitionFee" class="form-label"></label>
+        <input class="form-control" asp-for="TuitionFee" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="TuitionFeeDis" class="form-label"></label>
+        <input class="form-control" asp-for="TuitionFeeDis" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Commission" class="form-label"></label>
+        <input class="form-control" asp-for="Commission" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="AdmissionReq_en" class="form-label"></label>
+        <textarea class="form-control" asp-for="AdmissionReq_en"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="AdmissionReq_fa" class="form-label"></label>
+        <textarea class="form-control" asp-for="AdmissionReq_fa"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CareerPath_en" class="form-label"></label>
+        <textarea class="form-control" asp-for="CareerPath_fa"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description_en" class="form-label"></label>
+        <textarea class="form-control" asp-for="Description_fa"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="StudyYears" class="form-label"></label>
+        <input class="form-control" asp-for="StudyYears" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="TuitionUnit" class="form-label"></label>
+        <select class="form-control" asp-for="TuitionUnit" asp-items="@Html.GetEnumSelectList<TuitionUnit>()">
+            <option selected="selected" value=""> </option>
+        </select>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" asp-for="ActiveInSearch">
+        <label class="form-check-label" asp-for="ActiveInSearch"></label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" asp-for="ActiveInNewApps">
+        <label class="form-check-label" asp-for="ActiveInNewApps"></label>
+    </div>
+    <button type="submit" class="btn btn-success" asp-controller="UniversityProgramsController" asp-action="Create">Create</button>
+</form>

@@ -1,0 +1,17 @@
+﻿@model Programs
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+
+<h1>Are You Sure You want To Delete This Program?</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger" asp-controller="Programs" asp-action="Delete" 
+        asp-route-id="@Model.Id">Yes</button>
+    <button class="btn btn-success" asp-controller="Programs" asp-action="Index">No</button>
+</form>
