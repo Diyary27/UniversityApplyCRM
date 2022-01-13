@@ -33,22 +33,24 @@ namespace University_application_CRM.Controllers
             var UniProgramsVM = new UniversityProgramViewModel()
             {
                 UniversityId = id,
-                Programs = programs
+                Programs = programs,
+                ActiveInNewApps = true,
+                ActiveInSearch = true
             };
 
             return View(UniProgramsVM);
         }
 
         [HttpPost]
-        [Route("/UniversityPrograms/{id}/Create")]
-        public IActionResult Create(UniversityProgramViewModel UniProgramVM)
+        [Route("/Universities/{id}/Create")]
+        public IActionResult Create(UniversityProgramViewModel UniProgramVM, [FromRoute] int id)
         {
             var Speciality = _context.Specialities.Where(i => i.Name_en == UniProgramVM.ProgramName).FirstOrDefault();
             var Program = _context.Programs.Where(n => n.SpecialityId == Speciality.Id).FirstOrDefault();
 
             var UniProgram = new UniversityProgram()
             {
-                UniversityId = UniProgramVM.UniversityId,
+                UniversityId = id,
                 ProgramId = Program.Id,
                 TuitionFee = UniProgramVM.TuitionFee,
                 TuitionFeeDis = UniProgramVM.TuitionFeeDis,
@@ -68,30 +70,14 @@ namespace University_application_CRM.Controllers
             _context.Add(UniProgram);
             _context.SaveChanges();
 
-            return RedirectToAction(nameof(Index), new {id = UniProgramVM.UniversityId});
+            return RedirectToAction(nameof(Index), id);
         }
 
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            var Program = _context.Programs.Where(i => i.Id == id)
-                .Include(i => i.Speciality).Include(i => i.Language).FirstOrDefault();
 
-            var specialities = _context.Specialities.ToList();
-            var languages = _context.Languages.ToList();
-
-            var programsVM = new ProgramsViewModel()
-            {
-                Specialities = specialities,
-                Speciality = Program.Speciality.Name_en,
-                Languages = languages,
-                Language = Program.Language.Name,
-                Level = Enum.Parse<Level>(Program.Level),
-                ActiveInSearch = Program.ActiveInSearch,
-                ActiveInNewApps = Program.ActiveInNewApps
-            };
-
-            return View(programsVM);
+            return View();
         }
 
         [HttpPost]

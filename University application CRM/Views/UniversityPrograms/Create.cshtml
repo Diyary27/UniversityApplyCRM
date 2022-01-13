@@ -9,7 +9,7 @@
 <form method="post">
     <div class="mb-3">
         <label asp-for="ProgramName" class="form-label"></label>
-        <input class="form-control" list="@Model.Programs" />
+        <input class="form-control" asp-for="ProgramName" list="@Model.Programs" />
         <datalist id="@Model.Programs">
             @foreach (var item in Model.Programs)
             {
@@ -39,10 +39,18 @@
     </div>
     <div class="mb-3">
         <label asp-for="CareerPath_en" class="form-label"></label>
+        <textarea class="form-control" asp-for="CareerPath_en"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CareerPath_fa" class="form-label"></label>
         <textarea class="form-control" asp-for="CareerPath_fa"></textarea>
     </div>
     <div class="mb-3">
         <label asp-for="Description_en" class="form-label"></label>
+        <textarea class="form-control" asp-for="Description_en"></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description_fa" class="form-label"></label>
         <textarea class="form-control" asp-for="Description_fa"></textarea>
     </div>
     <div class="mb-3">
@@ -64,5 +72,5 @@
         <input class="form-check-input" type="checkbox" asp-for="ActiveInNewApps">
         <label class="form-check-label" asp-for="ActiveInNewApps"></label>
     </div>
-    <button type="submit" class="btn btn-success" asp-controller="UniversityProgramsController" asp-action="Create">Create</button>
+    <button type="submit" class="btn btn-success" asp-action="Create">Create</button>
 </form>
