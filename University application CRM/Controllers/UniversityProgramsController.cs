@@ -20,6 +20,7 @@ namespace University_application_CRM.Controllers
             var uniprograms = _context.UniversityPrograms.Where(i => i.UniversityId == id)
                 .Include(i => i.Program).ThenInclude(i => i.Speciality)
                 .Include(i => i.Program).ThenInclude(i => i.Language).ToList();
+            ViewData["UniId"] = id;
 
             return View(uniprograms);
         }
@@ -74,6 +75,7 @@ namespace University_application_CRM.Controllers
         }
 
         [HttpGet]
+        [Route("/Universities/{id}/Edit")]
         public IActionResult Edit(int id)
         {
 
@@ -81,6 +83,7 @@ namespace University_application_CRM.Controllers
         }
 
         [HttpPost]
+        [Route("/Universities/{id}/Edit")]
         public IActionResult Edit(ProgramsViewModel programsVM)
         {
             var Speciality = _context.Specialities.Where(i => i.Name_en == programsVM.Speciality).FirstOrDefault();
@@ -99,6 +102,7 @@ namespace University_application_CRM.Controllers
         }
 
         [HttpGet]
+        [Route("/Universities/{id}/Delete")]
         public IActionResult Delete(int id)
         {
             var Program = _context.Programs.Find(id);
@@ -108,6 +112,7 @@ namespace University_application_CRM.Controllers
 
         [HttpPost]
         [ActionName("Delete")]
+        [Route("/Universities/{id}/Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
             var Program = _context.Programs.Find(id);

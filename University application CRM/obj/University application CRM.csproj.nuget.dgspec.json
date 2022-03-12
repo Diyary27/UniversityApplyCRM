@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Diyar\\source\\repos\\University application CRM\\University application CRM\\University application CRM.csproj": {}
+    "C:\\Users\\D\\source\\repos\\UniversityApplyCRM\\University application CRM\\University application CRM.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Diyar\\source\\repos\\University application CRM\\University application CRM\\University application CRM.csproj": {
+    "C:\\Users\\D\\source\\repos\\UniversityApplyCRM\\University application CRM\\University application CRM.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Diyar\\source\\repos\\University application CRM\\University application CRM\\University application CRM.csproj",
+        "projectUniqueName": "C:\\Users\\D\\source\\repos\\UniversityApplyCRM\\University application CRM\\University application CRM.csproj",
         "projectName": "University application CRM",
-        "projectPath": "C:\\Users\\Diyar\\source\\repos\\University application CRM\\University application CRM\\University application CRM.csproj",
-        "packagesPath": "C:\\Users\\Diyar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Diyar\\source\\repos\\University application CRM\\University application CRM\\obj\\",
+        "projectPath": "C:\\Users\\D\\source\\repos\\UniversityApplyCRM\\University application CRM\\University application CRM.csproj",
+        "packagesPath": "C:\\Users\\D\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\D\\source\\repos\\UniversityApplyCRM\\University application CRM\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Diyar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\D\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
